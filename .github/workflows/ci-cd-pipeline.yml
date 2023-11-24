@@ -46,6 +46,7 @@ jobs:
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
+        git remote set-url origin https://x-access-token:${{ secrets.GIT_PAT }}@github.com/EAlainMG/CrashLikeRock.git
         git add ./k8s/frontend-deployment.yaml
         git add ./k8s/backend-deployment.yaml
         git diff --staged --quiet || git commit -m "Update deployment image tag to ${{ github.sha }}"
