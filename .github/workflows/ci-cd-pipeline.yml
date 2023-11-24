@@ -50,6 +50,6 @@ jobs:
         git add ./k8s/frontend-deployment.yaml
         git add ./k8s/backend-deployment.yaml
         git diff --staged --quiet || git commit -m "Update deployment image tag to ${{ github.sha }}"
-        git push --set-upstream origin HEAD:develop
+        git push origin develop
       env:
         GITHUB_TOKEN: ${{ secrets.GIT_PAT }}
