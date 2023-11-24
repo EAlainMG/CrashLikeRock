@@ -3,6 +3,8 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ develop ]
+    paths-ignore:
+      - 'k8s/*.yaml'
 
 jobs:
   build-and-push:
@@ -49,4 +51,4 @@ jobs:
         git commit -m "Update deployment image tag to ${{ github.sha }}"
         git push --set-upstream origin HEAD:develop
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GIT_PAT }}
