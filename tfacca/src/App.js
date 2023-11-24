@@ -5,7 +5,7 @@ function App() {
   const [number, setNumber] = useState(0);
 
   const incrementNumber = async () => {
-    const response = await fetch('http://localhost:3000/increment');
+    const response = await fetch('http://backend-service:3000/increment');
     const data = await response.json();
     setNumber(data.number);
   };
