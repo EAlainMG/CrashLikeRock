@@ -42,7 +42,7 @@ jobs:
       run: |
         sed -i "s|alainredacre/baccend:.*|alainredacre/baccend:${{ github.sha }}|g" ./k8s/backend-deployment.yaml
 
-    - name: Commit and Push Manifest Changes
+    - name: Commit and Push Manifest Changes Pls
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
