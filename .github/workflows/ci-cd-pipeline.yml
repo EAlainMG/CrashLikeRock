@@ -16,7 +16,7 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-    - name: Build and Push Frontend Docker Image Please
+    - name: Build and Push Frontend Docker Image Pls
       uses: docker/build-push-action@v2
       with:
         context: ./tfacca
