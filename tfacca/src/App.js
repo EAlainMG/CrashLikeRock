@@ -6,7 +6,7 @@ function App() {
 
   const incrementNumber = async () => {
     try {
-      const response = await fetch('http://localhost:3000/increment');
+      const response = await fetch('http://localhost/increment');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
