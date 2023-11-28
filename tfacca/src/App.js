@@ -22,7 +22,7 @@ function App() {
       <header className="App-header">
         <p>Number: {number}</p>
         <button onClick={incrementNumber}>
-          Increment
+          Increment & Retrieve
         </button>
       </header>
     </div>
