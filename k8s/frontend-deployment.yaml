@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: alainredacre/tfacca:latestfront
+        image: alainredacre/tfacca:faaf9a1f48b8b44f1ade242194254ac2332c162d
         ports:
         - containerPort: 80

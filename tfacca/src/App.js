@@ -5,9 +5,16 @@ function App() {
   const [number, setNumber] = useState(0);
 
   const incrementNumber = async () => {
-    const response = await fetch('http://backend-service:3000/increment');
-    const data = await response.json();
-    setNumber(data.number);
+    try {
+      const response = await fetch('http://localhost/increment');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setNumber(data.number);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
   };
 
   return (
@@ -15,7 +22,7 @@ function App() {
       <header className="App-header">
         <p>Number: {number}</p>
         <button onClick={incrementNumber}>
-          Increment
+          Increment & Retrieve
         </button>
       </header>
     </div>
