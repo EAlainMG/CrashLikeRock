@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: frontend-deployment
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: frontend
   template:
     metadata:
       labels:
-        app: backend
+        app: frontend
     spec:
       containers:
-      - name: backend
-        image: alainredacre/baccend:4937d0f620bffbe630fc861eabcf0f535318482e
+      - name: frontend
+        image: alainredacre/tfacca:8c322d2e92d8a52ad4b9390fb5eb58212521ba2b
         ports:
-        - containerPort: 3000
+        - containerPort: 80
