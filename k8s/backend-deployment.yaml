@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: backend
-        image: alainredacre/baccend:ce2013d04671b2ce331008dadc37598bee0d26cc
+        image: alainredacre/baccend:5c15144929ac13e13d743606121c3697559697e9
         ports:
         - containerPort: 3000
