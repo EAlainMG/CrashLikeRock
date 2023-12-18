@@ -6,7 +6,10 @@ function App() {
 
   const incrementNumber = async () => {
     try {
-      const response = await fetch('http://localhost/increment');
+      const backendPath = "/increment"; 
+      const backendUrl = `http://${window.location.hostname}${backendPath}`;
+      const response = await fetch(backendUrl);
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
