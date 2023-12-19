@@ -1,0 +1,17 @@
+# Create a namespace for Argo CD
+kubectl create namespace argocd
+
+# Download the Argo CD manifest
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml" -OutFile "argocd.yaml"
+
+# Apply the Argo CD manifest
+kubectl apply -n argocd -f argocd.yaml
+
+# Patch service to be of type LoadBalancer & publicly accessible
+kubectl patch svc argocd-server -n argocd -p '{\"spec\": {\"type\": \"LoadBalancer\"}}'
+
+# Install NGINX in cluster
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.4/deploy/static/provider/aws/deploy.yaml
+
+# Get Initial Admin Secret
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) }
