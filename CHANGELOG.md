@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/EAlainMG/CrashLikeRock/compare/v1.1.0...v2.0.0) (2023-12-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* He's dead chief!
+
+### Features
+
+* He's dead chief! ([44e26fb](https://github.com/EAlainMG/CrashLikeRock/commit/44e26fb6f38054c4f97c7c289c0bd98d1bafa51a))
+
 ## [1.1.0](https://github.com/EAlainMG/CrashLikeRock/compare/v1.0.1...v1.1.0) (2023-12-20)
 
 
