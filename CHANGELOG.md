@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/EAlainMG/CrashLikeRock/compare/v1.0.1...v1.1.0) (2023-12-20)
+
+
+### Features
+
+* Testing feature go up ([17356d9](https://github.com/EAlainMG/CrashLikeRock/commit/17356d904217c9bad9bcfb7db3f3fb0ea9c8237c))
+
 ## [1.0.1](https://github.com/EAlainMG/CrashLikeRock/compare/v1.0.0...v1.0.1) (2023-12-20)
 
 
