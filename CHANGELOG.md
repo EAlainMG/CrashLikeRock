@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.1](https://github.com/EAlainMG/CrashLikeRock/compare/v2.0.0...v2.0.1) (2023-12-21)
+
+
+### Bug Fixes
+
+* Fixed the previous fix ([1b113a2](https://github.com/EAlainMG/CrashLikeRock/commit/1b113a203d40e08f8f0f41a79223056bf8ce94b7))
+* Husky.sh no longer ignored + updated token ([1a4957b](https://github.com/EAlainMG/CrashLikeRock/commit/1a4957b011f00ef7362248a5902c9ab9032a23ab))
+
 ## [2.0.0](https://github.com/EAlainMG/CrashLikeRock/compare/v1.1.0...v2.0.0) (2023-12-20)
 
 
