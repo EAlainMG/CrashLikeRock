@@ -16,7 +16,7 @@ jobs:
       - name: Release Please  
         uses: google-github-actions/release-please-action@v3
         with:
-          token: ${{ secrets.GIT_PAT }}
+          token: ${{ secrets.REPO_WF_TOKEN }}
           release-type: simple
           package-name: CrashLikeRock
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false},{"type":"refactor","section":"Refactor","hidden":false}]'
