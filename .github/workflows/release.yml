@@ -20,3 +20,5 @@ jobs:
           release-type: simple
           package-name: CrashLikeRock
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false},{"type":"refactor","section":"Refactor","hidden":false}]'
+
+          
