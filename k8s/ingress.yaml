@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: a0ecbab9d94844b69a64253cd14de2e2-905928608.eu-west-2.elb.amazonaws.com
+  - host: http://a0ecbab9d94844b69a64253cd14de2e2-905928608.eu-west-2.elb.amazonaws.com
     http:
       paths:
       - path: /increment
