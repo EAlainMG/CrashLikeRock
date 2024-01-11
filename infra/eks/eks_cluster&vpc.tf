@@ -130,3 +130,60 @@ output "oidc_url" {
 output "oidc_id" {
   value = element(split("/", module.eks.cluster_oidc_issuer_url), length(split("/", module.eks.cluster_oidc_issuer_url)) - 1)
 }
+
+# Configure the Kubernetes provider
+provider "kubernetes" {
+  host                   = module.eks.cluster_endpoint
+  cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
+  token                  = data.aws_eks_cluster_auth.cluster.token
+}
+
+# Configure the Helm provider
+provider "helm" {
+  kubernetes {
+    host                   = module.eks.cluster_endpoint
+    cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
+    token                  = data.aws_eks_cluster_auth.cluster.token
+  }
+}
+
+# Kubernetes Namespace for Argo CD
+resource "kubernetes_namespace" "argocd" {
+  metadata {
+    name = "argocd"
+  }
+}
+
+# Kubernetes Namespace for NGINX Ingress
+resource "kubernetes_namespace" "nginx_ingress" {
+  metadata {
+    name = "nginx-ingress"
+  }
+}
+
+# Helm Release for Argo CD
+resource "helm_release" "argocd" {
+  name       = "argocd"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  namespace  = "argocd"
+
+  set {
+    name  = "server.service.type"
+    value = "LoadBalancer"
+  }
+}
+
+# Helm Release for NGINX Ingress
+resource "helm_release" "nginx_ingress" {
+  name       = "nginx-ingress"
+  repository = "https://helm.nginx.com/stable"
+  chart      = "nginx-ingress"
+  namespace  = "nginx-ingress"
+  # Additional configuration parameters
+}
+
+# EKS Cluster Authentication Data Source
+data "aws_eks_cluster_auth" "cluster" {
+  name = module.eks.cluster_name
+}
