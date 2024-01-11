@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/EAlainMG/CrashLikeRock/compare/v2.0.1...v2.0.2) (2023-12-21)
+
+
+### Bug Fixes
+
+* Stuff ([87609f3](https://github.com/EAlainMG/CrashLikeRock/commit/87609f35f8ecee8a36f2649ae28d9926cf9e6a02))
+
 ## [2.0.1](https://github.com/EAlainMG/CrashLikeRock/compare/v2.0.0...v2.0.1) (2023-12-21)
 
 
