@@ -99,7 +99,7 @@ module "eks" {
       min_size     = 1
       max_size     = 2
       desired_size = 2
-      instance_types = ["t3.large"]
+      instance_types = ["t3.small"]
       capacity_type  = "SPOT"
     }
   }
@@ -177,11 +177,12 @@ resource "helm_release" "argocd" {
 # Helm Release for NGINX Ingress
 resource "helm_release" "nginx_ingress" {
   name       = "nginx-ingress"
-  repository = "https://helm.nginx.com/stable"
-  chart      = "nginx-ingress"
+  repository = "https://kubernetes.github.io/ingress-nginx"
+  chart      = "ingress-nginx"
   namespace  = "nginx-ingress"
-  # Additional configuration parameters
+  version    = "4.0.6"
 }
+
 
 # EKS Cluster Authentication Data Source
 data "aws_eks_cluster_auth" "cluster" {
