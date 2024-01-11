@@ -177,9 +177,10 @@ resource "helm_release" "argocd" {
 # Helm Release for NGINX Ingress
 resource "helm_release" "nginx_ingress" {
   name       = "nginx-ingress"
-  repository = "https://helm.nginx.com/stable"
-  chart      = "nginx-ingress"
+  repository = "https://kubernetes.github.io/ingress-nginx"
+  chart      = "ingress-nginx"
   namespace  = "nginx-ingress"
+  version    = "1.0.4"
   # Additional configuration parameters
 }
 
