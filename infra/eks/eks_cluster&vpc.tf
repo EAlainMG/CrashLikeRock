@@ -68,7 +68,7 @@ module "eks" {
 
   cluster_security_group_additional_rules = {
     ingress_frontend_http = {
-      description   = "HTTP for frontend"
+      description   = "Frontend Service"
       protocol      = "tcp"
       from_port     = 80
       to_port       = 80
@@ -82,6 +82,22 @@ module "eks" {
       to_port       = 3000
       type          = "ingress"
       cidr_blocks   = local.private_subnets
+    },
+    egress_elasticsearch_https = {
+      description   = "HTTPS in"
+      protocol      = "tcp"
+      from_port     = 443
+      to_port       = 443
+      type          = "egress"
+      cidr_blocks   = ["18.135.236.36/32", "52.56.106.178/32"]  # ES IP range
+    },
+    egress_elasticsearch_port = {
+      description   = "HTTPS out"
+      protocol      = "tcp"
+      from_port     = 9200
+      to_port       = 9200
+      type          = "egress"
+      cidr_blocks   = ["18.135.236.36/32", "52.56.106.178/32"]  # ES IP range
     }
   }
   
@@ -187,4 +203,34 @@ resource "helm_release" "nginx_ingress" {
 # EKS Cluster Authentication Data Source
 data "aws_eks_cluster_auth" "cluster" {
   name = module.eks.cluster_name
+}
+
+resource "helm_release" "fluent_bit" {
+  name       = "fluent-bit"
+  repository = "https://fluent.github.io/helm-charts"
+  chart      = "fluent-bit"
+  namespace  = "kube-system"
+
+  set {
+    name  = "config.outputs"
+    value = <<-EOT
+      [OUTPUT]
+          Name  es
+          Match kube.*
+          Host  search-alsdomain-c2ujkicvnjw34twnruxbiz5pui.eu-west-2.es.amazonaws.com
+          Port 9200
+          Logstash_Format On
+          Retry_Limit 20
+
+      [OUTPUT]
+          Name  es
+          Match host.*
+          Host  search-alsdomain-c2ujkicvnjw34twnruxbiz5pui.eu-west-2.es.amazonaws.com
+          Port 9200
+          Logstash_Format On
+          Logstash_Prefix node
+          Retry_Limit 20
+    EOT
+  }
+
 }
